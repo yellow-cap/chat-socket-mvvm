@@ -32,6 +32,7 @@ DerivedData/
 *.DS_Store
 
 *.idea
+chat/.idea
 
 ## Playgrounds
 timeline.xctimeline
