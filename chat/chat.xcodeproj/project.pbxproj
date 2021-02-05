@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58C7A00E409BA7AA3252C422 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AC6C661CE8388B08FD15 /* ChatView.swift */; };
 		58C7A018A4B88B500EE5A316 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7ADBC8BC1489A0E9CEDD8 /* Preview Assets.xcassets */; };
 		58C7A29B0864BA6909BA0488 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF9BE2D5F61A4CDFCDD0 /* ContentView.swift */; };
 		58C7A32B2ECB10FDA2EB2C79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A21BDF99975338E64ECC /* Assets.xcassets */; };
 		58C7A556A3E7F518B760CDBB /* chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A8F6305C2219AB8C1534 /* chatTests.swift */; };
 		58C7A676FF1FDA51C548AD14 /* chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A6152C85D95686E78FCE /* chatUITests.swift */; };
+		58C7AAA7F26811B80D925416 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */; };
 		58C7AE54EC6F765B52EFB537 /* chatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0F37FDA983AC0628D36 /* chatApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +43,12 @@
 		58C7A8A11DC19973BAD16F6F /* chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C7A8F6305C2219AB8C1534 /* chatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatTests.swift; sourceTree = "<group>"; };
 		58C7AAA5EEF87B6A0212918D /* chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C7AC6C661CE8388B08FD15 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatView.swift; path = Presentation/Chat/ChatView.swift; sourceTree = "<group>"; };
 		58C7AD029CF68BA73B8F2037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7ADBC8BC1489A0E9CEDD8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		58C7AE1589B393038A346FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7AF9BE2D5F61A4CDFCDD0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationView.swift; path = Presentation/Authentication/AuthenticationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				58C7A614AD1707DC72D23324 /* Preview Content */,
 				58C7A0F37FDA983AC0628D36 /* chatApp.swift */,
 				58C7AF9BE2D5F61A4CDFCDD0 /* ContentView.swift */,
+				58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */,
+				58C7AC6C661CE8388B08FD15 /* ChatView.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 			files = (
 				58C7AE54EC6F765B52EFB537 /* chatApp.swift in Sources */,
 				58C7A29B0864BA6909BA0488 /* ContentView.swift in Sources */,
+				58C7AAA7F26811B80D925416 /* AuthenticationView.swift in Sources */,
+				58C7A00E409BA7AA3252C422 /* ChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
