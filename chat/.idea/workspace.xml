@@ -4,8 +4,7 @@
     <list default="true" id="8eff300b-1325-4354-99d2-f6390d647540" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/chat.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/Presentation/Authentication/AuthenticationView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/chat/Presentation/Authentication/AuthenticationView.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/Presentation/Chat/ChatView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/chat/Presentation/Chat/ChatView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/Presentation/Chat/ChatContainer.swift" beforeDir="false" afterPath="$PROJECT_DIR$/chat/Presentation/Chat/ChatContainer.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1612510473875</updated>
       <workItem from="1612510475217" duration="107000" />
-      <workItem from="1612510930102" duration="4712000" />
+      <workItem from="1612510930102" duration="7487000" />
     </task>
     <servers />
   </component>

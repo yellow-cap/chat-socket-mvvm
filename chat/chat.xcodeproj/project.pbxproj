@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		58C7A00E409BA7AA3252C422 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AC6C661CE8388B08FD15 /* ChatView.swift */; };
 		58C7A018A4B88B500EE5A316 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7ADBC8BC1489A0E9CEDD8 /* Preview Assets.xcassets */; };
+		58C7A1FE3BD8047F456233D9 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2605F0553C64D5EDB3B /* ChatViewModel.swift */; };
 		58C7A29B0864BA6909BA0488 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF9BE2D5F61A4CDFCDD0 /* ContentView.swift */; };
 		58C7A32B2ECB10FDA2EB2C79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A21BDF99975338E64ECC /* Assets.xcassets */; };
 		58C7A556A3E7F518B760CDBB /* chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A8F6305C2219AB8C1534 /* chatTests.swift */; };
+		58C7A5C0C61D3C3266C1AE5B /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A003F732B7ABF11D7CF1 /* ChatService.swift */; };
 		58C7A676FF1FDA51C548AD14 /* chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A6152C85D95686E78FCE /* chatUITests.swift */; };
 		58C7AAA7F26811B80D925416 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */; };
 		58C7AE54EC6F765B52EFB537 /* chatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0F37FDA983AC0628D36 /* chatApp.swift */; };
@@ -36,8 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58C7A003F732B7ABF11D7CF1 /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatService.swift; path = Service/ChatService.swift; sourceTree = "<group>"; };
 		58C7A0F37FDA983AC0628D36 /* chatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatApp.swift; sourceTree = "<group>"; };
 		58C7A21BDF99975338E64ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58C7A2605F0553C64D5EDB3B /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Presentation/Chat/ChatViewModel.swift; sourceTree = "<group>"; };
 		58C7A4F5650FC2590AAB565D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7A6152C85D95686E78FCE /* chatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatUITests.swift; sourceTree = "<group>"; };
 		58C7A763B27D997333E3A1C6 /* chatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +120,8 @@
 				58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */,
 				58C7AC6C661CE8388B08FD15 /* ChatView.swift */,
 				58C7ABBF76418437871FD501 /* ChatContainer.swift */,
+				58C7A2605F0553C64D5EDB3B /* ChatViewModel.swift */,
+				58C7A003F732B7ABF11D7CF1 /* ChatService.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -255,6 +261,8 @@
 				58C7AAA7F26811B80D925416 /* AuthenticationView.swift in Sources */,
 				58C7A00E409BA7AA3252C422 /* ChatView.swift in Sources */,
 				58C7AE9CB71080736731DB6B /* ChatContainer.swift in Sources */,
+				58C7A1FE3BD8047F456233D9 /* ChatViewModel.swift in Sources */,
+				58C7A5C0C61D3C3266C1AE5B /* ChatService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
