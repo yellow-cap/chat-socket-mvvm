@@ -13,10 +13,10 @@ struct ChatContainer: View {
                 userName: props.userName
         ))
                 .onAppear {
-                    // open connection
+                    chatViewModel.startChatSession()
                 }
                 .onDisappear {
-                    // close connection
+                    chatViewModel.stopChatSession()
                 }
     }
 }

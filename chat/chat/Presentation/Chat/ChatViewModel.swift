@@ -3,7 +3,23 @@ import Foundation
 class ChatViewModel: ObservableObject {
     @Published var messages: [String] = []
 
-    func startChatSession() {}
+    func startChatSession() {
+        guard let chatService = F.get(type: IChatService.self) else {
+            print("<<<DEV>>> chatService is not exist")
 
-    func stopChatSession() {}
+            return
+        }
+
+        chatService.startSession()
+    }
+
+    func stopChatSession() {
+        guard let chatService = F.get(type: IChatService.self) else {
+            print("<<<DEV>>> chatService is not exist")
+
+            return
+        }
+
+        chatService.stopSession()
+    }
 }
