@@ -7,10 +7,10 @@ protocol IChatService {
 }
 
 class ChatService: NSObject, IChatService, StreamDelegate {
-    let onMessageReceived: ((Message) -> Void)?
-    let onError: (() -> Void)?
+    let onMessageReceived: (() -> Void)
+    let onError: (() -> Void)
 
-    init(onMessageReceived: ((Message) -> Void)?, onError: (() -> Void)?) {
+    init(onMessageReceived: @escaping (() -> Void), onError: @escaping (() -> Void)) {
         self.onMessageReceived = onMessageReceived
         self.onError = onError
     }
@@ -117,9 +117,10 @@ class ChatService: NSObject, IChatService, StreamDelegate {
 
             guard let message = MessageHelper.buildMessage(buffer: buffer, length: numberOfBytesRead) else {
                 onError()
+                return
             }
 
-            onMessageReceived?(message)
+            onMessageReceived()
         }
     }
 }

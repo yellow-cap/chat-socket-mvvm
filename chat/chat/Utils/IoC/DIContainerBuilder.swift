@@ -5,8 +5,8 @@ class DIContainerBuilder {
     public static func build() -> Container {
         let container = Container()
 
-        container.register(IChatService.self, factory: { _ -> IChatService in
-            ChatService(onMessageReceived: nil, onError: nil)
+        container.register(IChatService.self, factory: { _, onMessageReceived, onError -> IChatService in
+            ChatService(onMessageReceived: onMessageReceived, onError: onError)
         })
                 .inObjectScope(.container)
 

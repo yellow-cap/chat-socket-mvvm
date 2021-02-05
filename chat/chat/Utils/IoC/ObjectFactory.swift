@@ -20,4 +20,12 @@ class ObjectFactory {
 
         return defaultContainer?.synchronize().resolve(type)
     }
+
+    public static func get<Service>(
+            type: Service.Type,
+            onSuccess: @escaping () -> Void,
+            onFail: @escaping () -> Void
+    ) -> Service? {
+        defaultContainer?.synchronize().resolve(type, arguments: onSuccess, onFail)
+    }
 }
