@@ -7,8 +7,8 @@ protocol IChatService {
 }
 
 class ChatService: IChatService {
-    private var inputStream: InputStream!
-    private var outputStream: OutputStream!
+    private var inputStream: InputStream? = nil
+    private var outputStream: OutputStream? = nil
     private let maxReadLength = 4096
 
     func startSession() {
@@ -26,6 +26,14 @@ class ChatService: IChatService {
 
         // inputStream.delegate = self
 
+        guard let inputStream = inputStream,
+              let outputStream = outputStream else {
+
+            print("<<<DEV>>> input or output stream is nil")
+
+            return
+        }
+
         inputStream.schedule(in: .current, forMode: .common)
         outputStream.schedule(in: .current, forMode: .common)
 
@@ -34,12 +42,26 @@ class ChatService: IChatService {
     }
 
     func stopSession() {
+        guard let inputStream = inputStream,
+              let outputStream = outputStream else {
+
+            print("<<<DEV>>> input or output stream is nil")
+
+            return
+        }
+
         inputStream.close()
         outputStream.close()
     }
 
     func joinChat(userName: String) {
         let data = "iam:\(userName)".data(using: .utf8)!
+
+        guard let outputStream = outputStream else {
+            print("<<<DEV>>> output stream is nil")
+
+            return
+        }
 
         data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
