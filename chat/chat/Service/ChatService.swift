@@ -15,6 +15,7 @@ class ChatService: IChatService {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
+        // TODO ARTEM: check if server is available
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
                 "localhost" as CFString,
                 80,
