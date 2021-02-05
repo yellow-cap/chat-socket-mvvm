@@ -6,7 +6,7 @@ class DIContainerBuilder {
         let container = Container()
 
         container.register(IChatService.self, factory: { _ -> IChatService in
-            ChatService()
+            ChatService(onMessageReceived: nil, onError: nil)
         })
                 .inObjectScope(.container)
 

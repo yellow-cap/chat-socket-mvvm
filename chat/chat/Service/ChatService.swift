@@ -6,7 +6,15 @@ protocol IChatService {
     func joinChat(userName: String)
 }
 
-class ChatService: IChatService {
+class ChatService: NSObject, IChatService, StreamDelegate {
+    let onMessageReceived: ((Message) -> Void)?
+    let onError: (() -> Void)?
+
+    init(onMessageReceived: ((Message) -> Void)?, onError: (() -> Void)?) {
+        self.onMessageReceived = onMessageReceived
+        self.onError = onError
+    }
+
     private var inputStream: InputStream? = nil
     private var outputStream: OutputStream? = nil
     private let maxReadLength = 4096
@@ -25,16 +33,14 @@ class ChatService: IChatService {
         inputStream = readStream!.takeRetainedValue()
         outputStream = writeStream!.takeRetainedValue()
 
-        // inputStream.delegate = self
-
         guard let inputStream = inputStream,
               let outputStream = outputStream else {
-
             print("<<<DEV>>> input or output stream is nil")
 
             return
         }
 
+        inputStream.delegate = self
         inputStream.schedule(in: .current, forMode: .common)
         outputStream.schedule(in: .current, forMode: .common)
 
@@ -45,7 +51,6 @@ class ChatService: IChatService {
     func stopSession() {
         guard let inputStream = inputStream,
               let outputStream = outputStream else {
-
             print("<<<DEV>>> input or output stream is nil")
 
             return
@@ -66,12 +71,55 @@ class ChatService: IChatService {
 
         data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("Error joining chat")
+                print("<<<DEV>>> Error joining chat")
 
                 return
             }
 
             outputStream.write(pointer, maxLength: data.count)
+        }
+    }
+
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        switch eventCode {
+        case .hasBytesAvailable:
+            print("<<<DEV>>> New message received")
+            readAvailableBytes(stream: aStream as! InputStream)
+        case .endEncountered:
+            print("<<<DEV>>> New message received")
+            stopSession()
+        case .errorOccurred:
+            print("<<<DEV>> Error occurred")
+        case .hasSpaceAvailable:
+            print("<<<DEV>> Has space available")
+        default:
+            print("<<<DEV>> Event is not defined")
+        }
+    }
+
+    private func readAvailableBytes(stream: InputStream) {
+        guard let inputStream = inputStream else {
+            print("<<<DEV>>> input stream is nil")
+
+            return
+        }
+
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
+
+        while stream.hasBytesAvailable {
+            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+
+            if numberOfBytesRead < 0, let error = stream.streamError {
+                print("<<<DEV>> Error while reading from the stream:  \(error)")
+
+                break
+            }
+
+            guard let message = MessageHelper.buildMessage(buffer: buffer, length: numberOfBytesRead) else {
+                onError()
+            }
+
+            onMessageReceived?(message)
         }
     }
 }
