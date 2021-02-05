@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @State var name = ""
+    @State var userName = ""
     @State var isChatActive: Bool = false
 
     var body: some View {
         VStack {
             VStack {
-                TextField("Enter your name", text: self.$name)
+                TextField("Enter your name", text: self.$userName)
                         .foregroundColor(Color(red: 0, green: 0, blue: 0))
 
             }
@@ -16,14 +16,14 @@ struct AuthenticationView: View {
                     .foregroundColor(Color(red: 239/255, green: 239/255, blue: 240/255))
 
             Button("Start chat") {
-                if name.isEmpty {
+                if userName.isEmpty {
                     return
                 }
 
                 isChatActive = true
             }
 
-            NavigationLink(destination: ChatView(), isActive: $isChatActive) {
+            NavigationLink(destination: ChatView(userName: userName), isActive: $isChatActive) {
                 EmptyView()
             }
         }
