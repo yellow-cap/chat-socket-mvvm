@@ -8,6 +8,7 @@ class DIContainerBuilder {
         container.register(IChatService.self, factory: { _ -> IChatService in
             ChatService()
         })
+                .inObjectScope(.container)
 
         return container
     }
