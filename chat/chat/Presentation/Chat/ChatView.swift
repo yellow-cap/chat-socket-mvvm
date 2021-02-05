@@ -1,10 +1,14 @@
 import SwiftUI
 
-struct ChatView: View {
+struct ChatViewProps {
     let userName: String
+}
+
+struct ChatView: View {
+    let props: ChatViewProps
 
     var body: some View {
-        Text("Hello, \(userName)")
+        Text("Hello, \(props.userName)")
                 .navigationBarTitle("Chat", displayMode: .inline)
     }
 }

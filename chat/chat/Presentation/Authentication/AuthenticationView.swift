@@ -23,7 +23,12 @@ struct AuthenticationView: View {
                 isChatActive = true
             }
 
-            NavigationLink(destination: ChatView(userName: userName), isActive: $isChatActive) {
+            NavigationLink(
+                    destination: ChatContainer(
+                            props: ChatContainerProps(userName: userName)
+                    ),
+                    isActive: $isChatActive
+            ) {
                 EmptyView()
             }
         }
