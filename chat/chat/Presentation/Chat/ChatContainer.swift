@@ -14,6 +14,7 @@ struct ChatContainer: View {
         ))
                 .onAppear {
                     chatViewModel.startChatSession()
+                    chatViewModel.joinChat(userName: props.userName)
                 }
                 .onDisappear {
                     chatViewModel.stopChatSession()

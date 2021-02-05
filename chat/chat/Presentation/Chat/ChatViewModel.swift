@@ -22,4 +22,14 @@ class ChatViewModel: ObservableObject {
 
         chatService.stopSession()
     }
+
+    func joinChat(userName: String) {
+        guard let chatService = F.get(type: IChatService.self) else {
+            print("<<<DEV>>> chatService is not exist")
+
+            return
+        }
+
+        chatService.joinChat(userName: userName)
+    }
 }
