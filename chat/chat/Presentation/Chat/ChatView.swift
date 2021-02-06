@@ -29,7 +29,7 @@ struct ChatView: View {
                         return
                     }
 
-                    // send
+                    chatViewModel.send(message: message)
                 }
             }
         }
