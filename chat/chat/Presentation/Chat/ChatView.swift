@@ -18,7 +18,7 @@ struct ChatView: View {
             }
             HStack {
                 VStack {
-                    TextField("Type something", text: self.$message)
+                    TextField("Type something...", text: self.$message)
                             .foregroundColor(Color(red: 0, green: 0, blue: 0))
 
                 }
