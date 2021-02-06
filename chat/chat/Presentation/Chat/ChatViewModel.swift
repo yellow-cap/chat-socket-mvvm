@@ -10,10 +10,6 @@ protocol IChatViewModel {
 class ChatViewModel: IChatViewModel, ObservableObject {
     @Published var messages: [Message] = []
 
-    init() {
-        print("<<<DEV>>> Init chatViewModel")
-    }
-
     func startChatSession() {
         guard let chatService = F.getWithCallbacks(
                 type: IChatService.self,
@@ -63,9 +59,5 @@ class ChatViewModel: IChatViewModel, ObservableObject {
 
     private func onError(error: String) {
         print("<<<DEV>>> \(error)")
-    }
-
-    deinit {
-        print("<<<DEV>>> Deinit chatViewModel")
     }
 }
