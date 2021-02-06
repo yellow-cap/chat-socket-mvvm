@@ -9,7 +9,7 @@ struct ChatView: View {
     let props: ChatViewProps
 
     var body: some View {
-        List {
+        ScrollView {
             ForEach(props.messages, id:\.self) { message in
                 Text(message.message)
             }
