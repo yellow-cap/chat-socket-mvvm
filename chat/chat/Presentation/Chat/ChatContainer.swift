@@ -10,7 +10,8 @@ struct ChatContainer: View {
 
     var body: some View {
         ChatView(props: ChatViewProps(
-                userName: props.userName
+                userName: props.userName,
+                messages: chatViewModel.messages
         ))
                 .onAppear {
                     chatViewModel.startChatSession()

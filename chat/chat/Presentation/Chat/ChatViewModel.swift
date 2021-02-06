@@ -1,7 +1,9 @@
 import Foundation
+import Combine
 
 class ChatViewModel: ObservableObject {
-    @Published var messages: [String] = []
+    let objectWillChange = ObservableObjectPublisher()
+    @Published var messages: [Message] = []
 
     func startChatSession() {
         guard let chatService = F.getWithCallbacks(
@@ -47,7 +49,7 @@ class ChatViewModel: ObservableObject {
 
     private func onMessageReceived(message: Message) {
         print("<<<DEV>>> \(message.message)")
-        messages.append(message.message)
+        messages.append(message)
     }
 
     private func onError(error: String) {
