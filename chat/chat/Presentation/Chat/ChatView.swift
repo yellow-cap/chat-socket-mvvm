@@ -1,18 +1,14 @@
 import SwiftUI
 
-struct ChatViewProps {
-    let userName: String
-    let messages: [Message]
-}
-
 struct ChatView: View {
-    let props: ChatViewProps
+    let userName: String
+    @ObservedObject var chatViewModel = F.get(type: IChatViewModel.self) as! ChatViewModel
     @State var message = ""
 
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(props.messages, id:\.self) { message in
+                ForEach(chatViewModel.messages, id:\.self) { message in
                     Text(message.message)
                 }
             }
@@ -39,5 +35,12 @@ struct ChatView: View {
         }
                 .padding(20)
                 .navigationBarTitle("Chat", displayMode: .inline)
+                .onAppear {
+                    chatViewModel.startChatSession()
+                    chatViewModel.joinChat(userName: userName)
+                }
+                .onDisappear {
+                    chatViewModel.stopChatSession()
+                }
     }
 }

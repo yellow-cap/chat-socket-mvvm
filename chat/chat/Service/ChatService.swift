@@ -4,6 +4,7 @@ protocol IChatService {
     func startSession()
     func stopSession()
     func joinChat(userName: String)
+    func send(message: String)
 }
 
 class ChatService: NSObject, IChatService, StreamDelegate {
@@ -73,6 +74,25 @@ class ChatService: NSObject, IChatService, StreamDelegate {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
                 print("<<<DEV>>> Error joining chat")
 
+                return
+            }
+
+            outputStream.write(pointer, maxLength: data.count)
+        }
+    }
+
+    func send(message: String) {
+        let data = "msg:\(message)".data(using: .utf8)!
+
+        guard let outputStream = outputStream else {
+            print("<<<DEV>>> output stream is nil")
+
+            return
+        }
+
+        data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error joining chat")
                 return
             }
 

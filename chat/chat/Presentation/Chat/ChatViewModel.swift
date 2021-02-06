@@ -5,6 +5,7 @@ protocol IChatViewModel {
     func startChatSession()
     func stopChatSession()
     func joinChat(userName: String)
+    func send(message: String)
 }
 
 class ChatViewModel: IChatViewModel, ObservableObject {
@@ -50,6 +51,20 @@ class ChatViewModel: IChatViewModel, ObservableObject {
         }
 
         chatService.joinChat(userName: userName)
+    }
+
+    func send(message: String) {
+        guard let chatService = F.getWithCallbacks(
+                type: IChatService.self,
+                onSuccess: onMessageReceived,
+                onError: onError) else {
+
+            print("<<<DEV>>> chatService is not exist")
+
+            return
+        }
+
+        chatService.send(message: message)
     }
 
     private func onMessageReceived(message: Message) {
