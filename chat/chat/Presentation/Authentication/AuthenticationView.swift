@@ -32,8 +32,8 @@ struct AuthenticationView: View {
                 EmptyView()
             }
         }
-                .navigationBarTitle("Authentication")
                 .padding(20)
+                .navigationBarTitle("Authentication")
 
     }
 }
