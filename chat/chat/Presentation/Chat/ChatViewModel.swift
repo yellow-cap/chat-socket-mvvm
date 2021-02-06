@@ -4,10 +4,10 @@ class ChatViewModel: ObservableObject {
     @Published var messages: [String] = []
 
     func startChatSession() {
-        guard let chatService = F.get(
+        guard let chatService = F.getWithCallbacks(
                 type: IChatService.self,
                 onSuccess: onMessageReceived,
-                onFail: onError) else {
+                onError: onError) else {
 
             print("<<<DEV>>> chatService is not exist")
 
@@ -18,10 +18,10 @@ class ChatViewModel: ObservableObject {
     }
 
     func stopChatSession() {
-        guard let chatService = F.get(
+        guard let chatService = F.getWithCallbacks(
                 type: IChatService.self,
                 onSuccess: onMessageReceived,
-                onFail: onError) else {
+                onError: onError) else {
 
             print("<<<DEV>>> chatService is not exist")
 
@@ -32,10 +32,10 @@ class ChatViewModel: ObservableObject {
     }
 
     func joinChat(userName: String) {
-        guard let chatService = F.get(
+        guard let chatService = F.getWithCallbacks(
                 type: IChatService.self,
                 onSuccess: onMessageReceived,
-                onFail: onError) else {
+                onError: onError) else {
 
             print("<<<DEV>>> chatService is not exist")
 
@@ -45,11 +45,11 @@ class ChatViewModel: ObservableObject {
         chatService.joinChat(userName: userName)
     }
 
-    private func onMessageReceived() {
+    private func onMessageReceived(message: Message) {
         print("<<<DEV>>> onMessageReceived")
     }
 
-    private func onError() {
+    private func onError(error: String) {
         print("<<<DEV>>> onError")
     }
 }

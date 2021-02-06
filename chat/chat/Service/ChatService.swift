@@ -7,10 +7,10 @@ protocol IChatService {
 }
 
 class ChatService: NSObject, IChatService, StreamDelegate {
-    let onMessageReceived: (() -> Void)
-    let onError: (() -> Void)
+    let onMessageReceived: (Message) -> Void
+    let onError: (String) -> Void
 
-    init(onMessageReceived: @escaping (() -> Void), onError: @escaping (() -> Void)) {
+    init(onMessageReceived: @escaping (Message) -> Void, onError: @escaping (String) -> Void) {
         self.onMessageReceived = onMessageReceived
         self.onError = onError
     }
@@ -92,6 +92,8 @@ class ChatService: NSObject, IChatService, StreamDelegate {
             print("<<<DEV>> Error occurred")
         case .hasSpaceAvailable:
             print("<<<DEV>> Has space available")
+        case .openCompleted:
+            print("<<<DEV>>> Connection open complete")
         default:
             print("<<<DEV>> Event is not defined")
         }
@@ -116,11 +118,11 @@ class ChatService: NSObject, IChatService, StreamDelegate {
             }
 
             guard let message = MessageHelper.buildMessage(buffer: buffer, length: numberOfBytesRead) else {
-                onError()
+                onError("<<<DEV>>> Couldn't build message from input stream")
                 return
             }
 
-            onMessageReceived()
+            onMessageReceived(message)
         }
     }
 }

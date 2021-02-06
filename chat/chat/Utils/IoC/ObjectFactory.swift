@@ -21,11 +21,11 @@ class ObjectFactory {
         return defaultContainer?.synchronize().resolve(type)
     }
 
-    public static func get<Service>(
+    public static func getWithCallbacks<Service, SuccessParam, FailParam>(
             type: Service.Type,
-            onSuccess: @escaping () -> Void,
-            onFail: @escaping () -> Void
+            onSuccess: @escaping (SuccessParam) -> Void,
+            onError: @escaping (FailParam) -> Void
     ) -> Service? {
-        defaultContainer?.synchronize().resolve(type, arguments: onSuccess, onFail)
+        defaultContainer?.synchronize().resolve(type, arguments: onSuccess, onError)
     }
 }
