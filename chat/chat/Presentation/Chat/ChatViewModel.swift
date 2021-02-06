@@ -2,7 +2,9 @@ import Foundation
 import Combine
 
 protocol IChatViewModel {
-
+    func startChatSession()
+    func stopChatSession()
+    func joinChat(userName: String)
 }
 
 class ChatViewModel: IChatViewModel, ObservableObject {
