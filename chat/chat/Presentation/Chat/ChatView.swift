@@ -30,6 +30,7 @@ struct ChatView: View {
                     }
 
                     chatViewModel.send(message: message)
+                    message = ""
                 }
             }
         }
