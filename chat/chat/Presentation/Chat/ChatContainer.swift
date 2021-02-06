@@ -6,7 +6,7 @@ struct ChatContainerProps {
 
 struct ChatContainer: View {
     let props: ChatContainerProps
-    let chatViewModel = ChatViewModel()
+    @ObservedObject var chatViewModel = F.get(type: IChatViewModel.self) as! ChatViewModel
 
     var body: some View {
         ChatView(props: ChatViewProps(
