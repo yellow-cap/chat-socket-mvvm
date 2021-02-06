@@ -17,13 +17,13 @@ class MessageHelper {
             return Message(
                     userName: nil,
                     messageType: .join,
-                    message: stringArray[0]
+                    message: stringArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
             )
         } else {
             return Message(
                     userName: stringArray[0],
                     messageType: .message,
-                    message: stringArray[1]
+                    message: stringArray[1].trimmingCharacters(in: .whitespacesAndNewlines)
             )
         }
     }

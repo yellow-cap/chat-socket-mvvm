@@ -46,10 +46,11 @@ class ChatViewModel: ObservableObject {
     }
 
     private func onMessageReceived(message: Message) {
-        print("<<<DEV>>> onMessageReceived")
+        print("<<<DEV>>> \(message.message)")
+        messages.append(message.message)
     }
 
     private func onError(error: String) {
-        print("<<<DEV>>> onError")
+        print("<<<DEV>>> \(error)")
     }
 }
