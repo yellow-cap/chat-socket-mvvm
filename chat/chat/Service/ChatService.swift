@@ -107,7 +107,6 @@ class ChatService: NSObject, IChatService, StreamDelegate {
             readAvailableBytes(stream: aStream as! InputStream)
         case .endEncountered:
             print("<<<DEV>>> New message received")
-            stopSession()
         case .errorOccurred:
             print("<<<DEV>> Error occurred")
         case .hasSpaceAvailable:
