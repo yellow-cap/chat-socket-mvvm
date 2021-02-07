@@ -43,25 +43,34 @@ struct ChatView: View {
     }
 
     private func userMessage(message: Message) -> some View {
-        if message.userName == userName {
-            return VStack(spacing: 0) {
-                Text(message.message)
-                        .foregroundColor(Color.white)
+        VStack {
+            if message.userName == userName {
+                VStack(alignment: .leading) {
+                    Text(message.message)
+                            .foregroundColor(Color.white)
+                }
+                        .frame(height: 20)
+                        .padding(10)
+                        .background(RoundedRectangle(cornerRadius: 8))
+                        .foregroundColor(Color.blue)
+            } else {
+                VStack(alignment: .leading) {
+                    Text("\(message.userName ?? "Anonymous"):")
+                            .font(Font.caption)
+                            .foregroundColor(Color.black)
+
+                    Text(message.message)
+                            .foregroundColor(Color.black)
+                }
+                        .frame(height: 20)
+                        .padding(10)
+                        .background(RoundedRectangle(cornerRadius: 8))
+                        .foregroundColor(Color.gray)
             }
-                    .frame(height: 20)
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 20))
-                    .foregroundColor(Color.green)
-        } else {
-            return VStack(spacing: 0) {
-                Text(message.message)
-                        .foregroundColor(Color.white)
-            }
-                    .frame(height: 20)
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 20))
-                    .foregroundColor(Color.green)
         }
+                .frame(
+                        maxWidth: .infinity,
+                        alignment: message.userName == userName ? .trailing : .leading)
     }
 
     private func messageTextField() -> some View {
