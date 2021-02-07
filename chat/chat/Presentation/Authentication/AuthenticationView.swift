@@ -8,12 +8,12 @@ struct AuthenticationView: View {
         VStack {
             VStack {
                 TextField("Enter your name", text: self.$userName)
-                        .foregroundColor(Color(red: 0, green: 0, blue: 0))
+                        .foregroundColor(Color.black)
 
             }
                     .padding(7)
                     .background(RoundedRectangle(cornerRadius: 8))
-                    .foregroundColor(Color(red: 239/255, green: 239/255, blue: 240/255))
+                    .foregroundColor(Color.gray)
 
             Button("Start chat") {
                 if userName.isEmpty {

@@ -20,6 +20,7 @@
 		58C7A8667A5AE972E1CA65CA /* ObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A893AAA6DD2008735E43 /* ObjectFactory.swift */; };
 		58C7AAA7F26811B80D925416 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */; };
 		58C7AB33CCB2062B3110353E /* MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFA954BA5565CC1D0E50 /* MessageHelper.swift */; };
+		58C7ABB6D01FE5A82DC6FAC5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFAAA71B35ED5FF789C7 /* ColorExtension.swift */; };
 		58C7ABC640D08D74D50D9B2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A58F4545B5321316F597 /* Message.swift */; };
 		58C7AE54EC6F765B52EFB537 /* chatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0F37FDA983AC0628D36 /* chatApp.swift */; };
 		9593E3274AB43B03FFF5C84A /* Pods_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E85EA6EED1CD6D6FE0479A /* Pods_chat.framework */; };
@@ -64,6 +65,7 @@
 		58C7AF9BE2D5F61A4CDFCDD0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		58C7AF9F3B82C86C4DEF270E /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationView.swift; path = Presentation/Authentication/AuthenticationView.swift; sourceTree = "<group>"; };
 		58C7AFA954BA5565CC1D0E50 /* MessageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageHelper.swift; path = Business/Message/MessageHelper.swift; sourceTree = "<group>"; };
+		58C7AFAAA71B35ED5FF789C7 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		85E85EA6EED1CD6D6FE0479A /* Pods_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4AB5F98A98C352CEAC1156 /* Pods-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat.release.xcconfig"; path = "Target Support Files/Pods-chat/Pods-chat.release.xcconfig"; sourceTree = "<group>"; };
 		B8AA782379AF8A7AD37F71BC /* Pods-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat.debug.xcconfig"; path = "Target Support Files/Pods-chat/Pods-chat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				58C7A08AD2E4F602F06A0605 /* DIContainerBuilder.swift */,
 				58C7A893AAA6DD2008735E43 /* ObjectFactory.swift */,
+				58C7AFAAA71B35ED5FF789C7 /* ColorExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				58C7ABC640D08D74D50D9B2A /* Message.swift in Sources */,
 				58C7AB33CCB2062B3110353E /* MessageHelper.swift in Sources */,
 				58C7A185F9ECB0D8A3A56902 /* MessageType.swift in Sources */,
+				58C7ABB6D01FE5A82DC6FAC5 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,30 +9,15 @@ struct ChatView: View {
         VStack {
             ScrollView {
                 ForEach(chatViewModel.messages, id:\.self) { message in
-                    Text(message.message)
-                }
-            }
-            HStack {
-                VStack {
-                    TextField("Type something...", text: self.$message)
-                            .foregroundColor(Color(red: 0, green: 0, blue: 0))
-
-                }
-                        .padding(7)
-                        .background(RoundedRectangle(cornerRadius: 8))
-                        .foregroundColor(Color(red: 239/255, green: 239/255, blue: 240/255))
-
-                Spacer()
-
-                Button("Send") {
-                    if message.isEmpty {
-                        return
+                    if message.messageType == MessageType.join {
+                        joinMessage(message: message)
+                    } else {
+                        userMessage(message: message)
                     }
-
-                    chatViewModel.send(message: message)
-                    message = ""
                 }
             }
+
+            messageTextField()
         }
                 .padding(20)
                 .navigationBarTitle("Chat", displayMode: .inline)
@@ -43,5 +28,63 @@ struct ChatView: View {
                 .onDisappear {
                     chatViewModel.stopChatSession()
                 }
+    }
+
+    private func joinMessage(message: Message) -> some View {
+        VStack(spacing: 0) {
+            Text(message.message)
+                    .font(Font.caption)
+                    .foregroundColor(Color.black)
+        }
+                .frame(height: 16)
+                .padding(8)
+                .background(RoundedRectangle(cornerRadius: 16))
+                .foregroundColor(Color.gray)
+    }
+
+    private func userMessage(message: Message) -> some View {
+        if message.userName == userName {
+            return VStack(spacing: 0) {
+                Text(message.message)
+                        .foregroundColor(Color.white)
+            }
+                    .frame(height: 20)
+                    .padding(10)
+                    .background(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(Color.green)
+        } else {
+            return VStack(spacing: 0) {
+                Text(message.message)
+                        .foregroundColor(Color.white)
+            }
+                    .frame(height: 20)
+                    .padding(10)
+                    .background(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(Color.green)
+        }
+    }
+
+    private func messageTextField() -> some View {
+        HStack {
+            VStack {
+                TextField("Type something...", text: self.$message)
+                        .foregroundColor(Color.black)
+
+            }
+                    .padding(7)
+                    .background(RoundedRectangle(cornerRadius: 8))
+                    .foregroundColor(Color.gray)
+
+            Spacer()
+
+            Button("Send") {
+                if message.isEmpty {
+                    return
+                }
+
+                chatViewModel.send(message: message)
+                message = ""
+            }
+        }
     }
 }
