@@ -22,8 +22,7 @@ struct ChatView: View {
                 .padding(20)
                 .navigationBarTitle("Chat", displayMode: .inline)
                 .onAppear {
-                    chatViewModel.startChatSession()
-                    chatViewModel.joinChat(userName: userName)
+                    chatViewModel.startChatSession(userName: userName)
                 }
                 .onDisappear {
                     chatViewModel.stopChatSession()

@@ -2,16 +2,15 @@ import Foundation
 import Combine
 
 protocol IChatViewModel {
-    func startChatSession()
+    func startChatSession(userName: String)
     func stopChatSession()
-    func joinChat(userName: String)
     func send(message: String)
 }
 
 class ChatViewModel: IChatViewModel, ObservableObject {
     @Published var messages: [Message] = []
 
-    func startChatSession() {
+    func startChatSession(userName: String) {
         guard let chatService = F.getWithCallbacks(
                 type: IChatService.self,
                 onSuccess: onMessageReceived,
@@ -22,7 +21,7 @@ class ChatViewModel: IChatViewModel, ObservableObject {
             return
         }
 
-        chatService.startSession()
+        chatService.startSession(userName: userName)
     }
 
     func stopChatSession() {
@@ -37,20 +36,6 @@ class ChatViewModel: IChatViewModel, ObservableObject {
         }
 
         chatService.stopSession()
-    }
-
-    func joinChat(userName: String) {
-        guard let chatService = F.getWithCallbacks(
-                type: IChatService.self,
-                onSuccess: onMessageReceived,
-                onError: onError) else {
-
-            print("<<<DEV>>> chatService is not exist")
-
-            return
-        }
-
-        chatService.joinChat(userName: userName)
     }
 
     func send(message: String) {

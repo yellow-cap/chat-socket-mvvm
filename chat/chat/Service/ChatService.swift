@@ -1,9 +1,8 @@
 import Foundation
 
 protocol IChatService {
-    func startSession()
+    func startSession(userName: String)
     func stopSession()
-    func joinChat(userName: String)
     func send(message: String)
 }
 
@@ -20,7 +19,7 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     private var outputStream: OutputStream? = nil
     private let maxReadLength = 4096
 
-    func startSession() {
+    func startSession(userName: String) {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
@@ -61,7 +60,7 @@ class ChatService: NSObject, IChatService, StreamDelegate {
         outputStream.close()
     }
 
-    func joinChat(userName: String) {
+    private func joinChat(userName: String) {
         let data = "iam:\(userName)".data(using: .utf8)!
 
         guard let outputStream = outputStream else {
