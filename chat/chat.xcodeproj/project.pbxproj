@@ -22,6 +22,7 @@
 		58C7AB33CCB2062B3110353E /* MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFA954BA5565CC1D0E50 /* MessageHelper.swift */; };
 		58C7ABB6D01FE5A82DC6FAC5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFAAA71B35ED5FF789C7 /* ColorExtension.swift */; };
 		58C7ABC640D08D74D50D9B2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A58F4545B5321316F597 /* Message.swift */; };
+		58C7AC9449C1332BB39D3FC4 /* ThreadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AADC74D404D4541B3A23 /* ThreadExtension.swift */; };
 		58C7AE54EC6F765B52EFB537 /* chatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0F37FDA983AC0628D36 /* chatApp.swift */; };
 		9593E3274AB43B03FFF5C84A /* Pods_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E85EA6EED1CD6D6FE0479A /* Pods_chat.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		58C7A8A11DC19973BAD16F6F /* chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C7A8F6305C2219AB8C1534 /* chatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatTests.swift; sourceTree = "<group>"; };
 		58C7AAA5EEF87B6A0212918D /* chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C7AADC74D404D4541B3A23 /* ThreadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadExtension.swift; sourceTree = "<group>"; };
 		58C7AC6C661CE8388B08FD15 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatView.swift; path = Presentation/Chat/ChatView.swift; sourceTree = "<group>"; };
 		58C7AD029CF68BA73B8F2037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7ADBC8BC1489A0E9CEDD8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				58C7A08AD2E4F602F06A0605 /* DIContainerBuilder.swift */,
 				58C7A893AAA6DD2008735E43 /* ObjectFactory.swift */,
 				58C7AFAAA71B35ED5FF789C7 /* ColorExtension.swift */,
+				58C7AADC74D404D4541B3A23 /* ThreadExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				58C7AB33CCB2062B3110353E /* MessageHelper.swift in Sources */,
 				58C7A185F9ECB0D8A3A56902 /* MessageType.swift in Sources */,
 				58C7ABB6D01FE5A82DC6FAC5 /* ColorExtension.swift in Sources */,
+				58C7AC9449C1332BB39D3FC4 /* ThreadExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
