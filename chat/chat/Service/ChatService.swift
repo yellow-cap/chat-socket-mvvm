@@ -20,6 +20,42 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     private let maxReadLength = 4096
 
     func startSession(userName: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+
+            self.setupConnection()
+
+            dispatchGroup.leave()
+            dispatchGroup.wait()
+
+            self.joinChat(userName: userName)
+
+            RunLoop.current.run()
+        }
+    }
+
+    func stopSession() {
+        guard let inputStream = inputStream,
+              let outputStream = outputStream else {
+            print("<<<DEV>>> input or output stream is nil")
+
+            return
+        }
+
+        inputStream.close()
+        outputStream.close()
+    }
+
+    func send(message: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.sendMessage(message: message)
+        }
+    }
+
+    private func setupConnection() {
+        print("<<<DEV>>> Current thread in setupConnection is \(Thread.current.threadName)")
+
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
@@ -47,19 +83,9 @@ class ChatService: NSObject, IChatService, StreamDelegate {
         outputStream.open()
     }
 
-    func stopSession() {
-        guard let inputStream = inputStream,
-              let outputStream = outputStream else {
-            print("<<<DEV>>> input or output stream is nil")
-
-            return
-        }
-
-        inputStream.close()
-        outputStream.close()
-    }
-
     private func joinChat(userName: String) {
+        print("<<<DEV>>> Current thread in joinChat is \(Thread.current.threadName)")
+
         let data = "iam:\(userName)".data(using: .utf8)!
 
         guard let outputStream = outputStream else {
@@ -79,7 +105,9 @@ class ChatService: NSObject, IChatService, StreamDelegate {
         }
     }
 
-    func send(message: String) {
+    private func sendMessage(message: String) {
+        print("<<<DEV>>> Current thread in send is \(Thread.current.threadName)")
+
         let data = "msg:\(message)".data(using: .utf8)!
 
         guard let outputStream = outputStream else {
@@ -90,7 +118,7 @@ class ChatService: NSObject, IChatService, StreamDelegate {
 
         data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("Error joining chat")
+                print("<<<DEV>>> Error joining chat")
                 return
             }
 
@@ -99,6 +127,8 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     }
 
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        print("<<<DEV>>> Current thread in stream is \(Thread.current.threadName)")
+
         switch eventCode {
         case .hasBytesAvailable:
             print("<<<DEV>>> New message received")
@@ -139,7 +169,9 @@ class ChatService: NSObject, IChatService, StreamDelegate {
                 return
             }
 
-            onMessageReceived(message)
+            DispatchQueue.main.async {
+                self.onMessageReceived(message)
+            }
         }
     }
 }
