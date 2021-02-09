@@ -5,6 +5,7 @@ protocol IChatViewModel {
     func startChatSession(userName: String)
     func stopChatSession()
     func send(message: String)
+    func cleanError()
 }
 
 class ChatViewModel: IChatViewModel, ObservableObject {
@@ -53,12 +54,17 @@ class ChatViewModel: IChatViewModel, ObservableObject {
         chatService.send(message: message)
     }
 
+
+    func cleanError() {
+        error = ""
+    }
+
     private func onMessageReceived(message: Message) {
         print("<<<DEV>>> \(message.message)")
         messages.append(message)
     }
 
-    private func onError(error: String) {
-        print("<<<DEV>>> \(error)")
+    private func onError(err: String) {
+        error = err
     }
 }

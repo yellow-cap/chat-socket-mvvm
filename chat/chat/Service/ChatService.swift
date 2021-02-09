@@ -58,6 +58,14 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     }
 
     func send(message: String) {
+        timer = Timer.scheduledTimer(
+                timeInterval: 3.0,
+                target: self,
+                selector: #selector(onTimerFinish),
+                userInfo: nil,
+                repeats: false
+        )
+
         DispatchQueue.global(qos: .userInitiated).async {
             self.sendMessage(message: message)
         }

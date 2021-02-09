@@ -27,6 +27,10 @@ struct ChatView: View {
                 .onDisappear {
                     chatViewModel.stopChatSession()
                 }
+                .alert(
+                        isPresented: .constant(!_chatViewModel.wrappedValue.error.isEmpty)) {
+                    alert(message: chatViewModel.error)
+                }
     }
 
     private func joinMessage(message: Message) -> some View {
@@ -94,5 +98,19 @@ struct ChatView: View {
                 message = ""
             }
         }
+    }
+
+    private func alert(message: String) -> Alert {
+        Alert(
+                title: Text("Message"),
+                message: Text(message),
+                primaryButton: .default(Text("Try again"), action: {
+                    chatViewModel.cleanError()
+                    chatViewModel.startChatSession(userName: userName)
+                }),
+                secondaryButton: .cancel(Text("Cancel"), action: {
+                    chatViewModel.cleanError()
+                })
+        )
     }
 }
