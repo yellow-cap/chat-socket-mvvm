@@ -22,13 +22,7 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     private var timer: Timer? = nil
 
     func startSession(userName: String) {
-        timer = Timer.scheduledTimer(
-                timeInterval: 3.0,
-                target: self,
-                selector: #selector(onTimerFinish),
-                userInfo: nil,
-                repeats: false
-        )
+        timer = createTimer()
 
         DispatchQueue.global(qos: .userInitiated).async {
             let dispatchGroup = DispatchGroup()
@@ -58,13 +52,7 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     }
 
     func send(message: String) {
-        timer = Timer.scheduledTimer(
-                timeInterval: 3.0,
-                target: self,
-                selector: #selector(onTimerFinish),
-                userInfo: nil,
-                repeats: false
-        )
+        timer = createTimer()
 
         DispatchQueue.global(qos: .userInitiated).async {
             self.sendMessage(message: message)
@@ -193,6 +181,16 @@ class ChatService: NSObject, IChatService, StreamDelegate {
                 self.onMessageReceived(message)
             }
         }
+    }
+
+    private func createTimer() -> Timer {
+        Timer.scheduledTimer(
+                timeInterval: 3.0,
+                target: self,
+                selector: #selector(onTimerFinish),
+                userInfo: nil,
+                repeats: false
+        )
     }
 
     @objc private func onTimerFinish() {
