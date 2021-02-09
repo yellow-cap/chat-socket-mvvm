@@ -19,7 +19,17 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     private var outputStream: OutputStream? = nil
     private let maxReadLength = 4096
 
+    private var timer: Timer? = nil
+
     func startSession(userName: String) {
+        timer = Timer.scheduledTimer(
+                timeInterval: 3.0,
+                target: self,
+                selector: #selector(onTimerFinish),
+                userInfo: nil,
+                repeats: false
+        )
+
         DispatchQueue.global(qos: .userInitiated).async {
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
@@ -129,6 +139,8 @@ class ChatService: NSObject, IChatService, StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         print("<<<DEV>>> Current thread in stream is \(Thread.current.threadName)")
 
+        timer?.invalidate()
+
         switch eventCode {
         case .hasBytesAvailable:
             print("<<<DEV>>> New message received")
@@ -172,6 +184,14 @@ class ChatService: NSObject, IChatService, StreamDelegate {
             DispatchQueue.main.async {
                 self.onMessageReceived(message)
             }
+        }
+    }
+
+    @objc private func onTimerFinish() {
+        print("<<<DEV>>> Timer ended")
+
+        DispatchQueue.main.async {
+            self.onError("Connection refused. Try to launch server: ./sever/server")
         }
     }
 }

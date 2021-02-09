@@ -9,6 +9,7 @@ protocol IChatViewModel {
 
 class ChatViewModel: IChatViewModel, ObservableObject {
     @Published var messages: [Message] = []
+    @Published var error: String = ""
 
     func startChatSession(userName: String) {
         guard let chatService = F.getWithCallbacks(
